@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "whileempty",
+  "version": "${version}",
+  "name": "WhileEmpty",
+  "description": "Allows configuring commands to be run when the last player leaves and when the first player joins.",
+  "authors": [
+    "NotRyken"
+  ],
+  "contact": {
+    "homepage": "https://github.com/NotRyken/WhileEmpty",
+    "sources": "https://github.com/NotRyken/WhileEmpty"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/whileempty/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.notryken.WhileEmpty"
+    ],
+    "client": [
+      "com.notryken.WhileEmptyClient"
+    ]
+  },
+  "mixins": [
+    "whileempty.mixins.json",
+    {
+      "config": "whileempty.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.1",
+    "minecraft": ">=1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
