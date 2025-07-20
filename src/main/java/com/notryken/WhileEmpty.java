@@ -6,6 +6,7 @@ import com.notryken.config.DelayedMessage;
 import com.notryken.util.ModLogger;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.MinecraftServer;
@@ -45,6 +46,19 @@ public class WhileEmpty implements ModInitializer {
             if (server.getCurrentPlayerCount() == options().emptyThreshold + 1) {
                 LOG.info(
                         "Last player left, triggering {} message(s)",
+                        options().onLastPlayerLeave.size()
+                );
+                tickingMessages.clear();
+                tickingMessages.addAll(options().onLastPlayerLeave);
+            }
+        });
+
+        ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
+            if (!options().enabled)
+                return;
+            if (options().runLastPlayerLeaveOnStart) {
+                LOG.info(
+                        "Server started, triggering {} message(s)",
                         options().onLastPlayerLeave.size()
                 );
                 tickingMessages.clear();

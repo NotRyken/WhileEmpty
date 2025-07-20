@@ -26,7 +26,8 @@ player joins.
     "enabled": true,
     // the player-count at which the server is considered 'empty'
     "emptyThreshold": 0,
-    // a list of delayed messages or commands to be run when the playercount reaches the threshold (descending)
+    // a list of delayed messages or commands to be sent when the
+    // player-count reaches the threshold (descending)
     "onLastPlayerLeave": [
       {
         "message": "Server is now empty!",
@@ -37,7 +38,11 @@ player joins.
         "delayTicks": 40
       }
     ],
-    // a list of delayed messages or commands to be run when the playercount exceeds the threshold (ascending)
+    // whether to also send the 'onLastPlayerLeave' messages when
+    // the server is first started
+    "runLastPlayerLeaveOnStart": false,
+    // a list of delayed messages or commands to be sent when the
+    // player-count exceeds the threshold (ascending)
     "onFirstPlayerJoin": [
       {
         "message": "Server is no longer empty!",

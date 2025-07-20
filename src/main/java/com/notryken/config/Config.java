@@ -43,6 +43,9 @@ public class Config {
         );
         public List<DelayedMessage> onLastPlayerLeave = onLastPlayerLeaveDefault.get();
 
+        public static final boolean runLastPlayerLeaveOnStartDefault = false;
+        public boolean runLastPlayerLeaveOnStart = runLastPlayerLeaveOnStartDefault;
+
         public static final Supplier<List<DelayedMessage>> onFirstPlayerJoinDefault = () -> List.of(
                 new DelayedMessage("/say Server is no longer empty!", 0)
         );
