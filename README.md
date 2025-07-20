@@ -19,7 +19,7 @@ player joins.
 
 - The mod can be configured via the `whileempty.json` config file.
 
-```json
+```json5
 {
   "options": {
     // the mod status
